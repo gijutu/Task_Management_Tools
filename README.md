@@ -1,24 +1,14 @@
 # README
+実技演習課題シリーズの演習用のリポジトリです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 開発したアプリケーションの概要
+タスク管理システムを開発いたしました。  
+本演習課題READMEに書かれていた要件仕様をもとに、仕様内容と合致したアプリケーションを作成しました。
 
-Things you may want to cover:
+# 開発環境
+##言語・ミドルウェアなど
+* Ruby 2.5.1
+* Ruby on Rails 5.2.1
+* Sqlite
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# セットアップ
