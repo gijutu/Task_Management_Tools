@@ -1,0 +1,18 @@
+<h1>たすくいちらん</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>たすくめい</th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= link_to 'しょうさい', task_path(task.id) %></td>
+    <td><%= link_to "へんしゅう", edit_task_path(task.id) %></td>
+    <td><%= link_to 'さくじょする', task_path(task.id), method: :delete,data: { confirm: 'さくじょしますよ？'} %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'あたらしいたすく',new_task_path %>
