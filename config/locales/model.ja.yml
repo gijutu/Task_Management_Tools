@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      task: "たすく"
+      user: "ゆーざー"
+    attributes:
+      task:
+        title: "たいとる"
+        content: "しょうさい"
+        limit: "りみっと"
+      user:
+        title: "たいとる"
+        name: "なまえ"
+        email: "あどれす"
+        current_password: "なうぱすわーど"
+        password: "ぱすわーど"
+        password_confirmation: "かくにんぱすわーど"
+        remember_me: "ろぐいんきおく"
