@@ -1,0 +1,22 @@
+<h1><%= t('.name') %></h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th><%= t('.table_th') %></th>
+    <th><%= sort_link(@search, :limit_time, "いつまでに") %></th>
+    <th><%= t('.time_project') %></th>
+  </tr>
+
+<% @tasks.order("created_on DESC").each do |task| %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= task.limit_time %></td>
+    <td><%= task.created_on.strftime("%Y-%m-%d%H:%M") %></td>
+    <td><%= link_to t('.show'), task_path(task.id) %></td>
+    <td><%= link_to t('.edit'), edit_task_path(task.id) %></td>
+    <td><%= link_to t('.destroy'), task_path(task.id), method: :delete,data: { confirm: 'さくじょしますよ？'} %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to t('.new'),new_task_path %>
