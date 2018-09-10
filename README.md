@@ -11,4 +11,15 @@
 * Ruby on Rails 5.2.1
 * Sqlite
 
-# セットアップ
+## セットアップ
+* cd task_management_tool
+* bundle install --path vendor/bundler
+* heroku create
+* heroku run rails db:migrate
+
+### herokuへデプロイ
+* gitへコミット
+* herokuでアプリケーション作成(heroku create)
+* アセットをコンパイル(rails assets:precompile RAILS_ENV=production)
+* herokuへデプロイ(git push heroku master)
+* heroku へデータベース移行(heroku run rails db:migrate)
