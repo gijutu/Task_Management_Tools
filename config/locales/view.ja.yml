@@ -1,0 +1,21 @@
+ja:
+  tasks:
+    index:
+      name: たすくいちらん
+      table_th: たすくめい
+      time_limit: いつまでに
+      time_project: さくせいび
+      show: しょうさい
+      edit: へんしゅう
+      destroy: さくじょする
+      new: あたらしいたすく
+    form:
+      errors: こえらーがあります
+      return: もどる
+    show:
+      name: たすくしょうさい
+      title: たすくめい
+      content: しょうさい
+      return: もどる
+    new:
+      name: たすくをつくる
