@@ -3,6 +3,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+    @search = Task.search(params[:q])
+    @tasks = @search.result
   end
 
   def new
