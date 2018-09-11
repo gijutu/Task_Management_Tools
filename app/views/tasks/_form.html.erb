@@ -9,7 +9,7 @@
         <% end %>
         </ul>
       </div>
-    <% end %>
+  <% end %>
 
   <div class="task_title">
     <%= form.label :title %>
@@ -23,8 +23,16 @@
     <%= form.label :limit %>
     <%= form.date_select :limit_time %>
   </div>
+  <div class="task_title">
+    <%= form.label :status %>
+    <%= form.select :status, Task.statuses_i18n.keys.map { |k| [Task.statuses_i18n[k], k]} %>
+  </div>
+  <div class="task_title">
+    <%= form.label :priority_color %>
+    <%= form.select :priority_color, [["たか", "あか"], ["まあまあ", "きいろ"], ["ひくい", "あお"]] %>
+  </div>
 
-  <%= form.submit %>
+  <%= form.submit "とうろく"%>
 <% end %>
 
 <%= link_to t('.return'), tasks_path %>

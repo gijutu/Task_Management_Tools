@@ -1,17 +1,32 @@
 <h1><%= t('.name') %></h1>
 <p><%= notice %></p>
+
+<%= form_with(model: @task, local: true) do |form| %>
+  <%= form.label :たいとる %>
+  <%= form.text_field :hit_title %>
+  <%= form.label :すてーたす %>
+  <%= form.select :hit_status, Task.statuses_i18n.keys.map { |k| [Task.statuses_i18n[k], k]} %>
+
+  <%= form.submit "けんさく" %>
+<% end %>
+<br><br>
+
 <table>
   <tr>
+    <th><%= sort_link(@search, :priority_color,t('.color')) %></th>
     <th><%= t('.table_th') %></th>
     <th><%= sort_link(@search, :limit_time, "いつまでに") %></th>
     <th><%= t('.time_project') %></th>
+    <th><%= t('.status') %></th>
   </tr>
 
 <% @tasks.order("created_on DESC").each do |task| %>
   <tr>
+    <td><%= task.priority_color %></td>
     <td><%= task.title %></td>
     <td><%= task.limit_time %></td>
     <td><%= task.created_on.strftime("%Y-%m-%d%H:%M") %></td>
+    <td><%= task.status_i18n %></td>
     <td><%= link_to t('.show'), task_path(task.id) %></td>
     <td><%= link_to t('.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('.destroy'), task_path(task.id), method: :delete,data: { confirm: 'さくじょしますよ？'} %></td>

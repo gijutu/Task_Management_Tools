@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_045722) do
+ActiveRecord::Schema.define(version: 2018_09_11_014917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,22 +21,22 @@ ActiveRecord::Schema.define(version: 2018_09_07_045722) do
   end
 
   create_table "labels", force: :cascade do |t|
-    t.string "label_name"
+    t.string "label_name", limit: 500, default: "", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.date "limit_time"
-    t.integer "status"
-    t.string "priority_color"
+    t.string "title", limit: 500, default: "", null: false
+    t.text "content", default: "", null: false
+    t.date "limit_time", null: false
+    t.integer "status", null: false
+    t.string "priority_color", null: false
     t.datetime "created_on"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "name", limit: 500, default: "", null: false
+    t.string "email", limit: 500, default: "", null: false
+    t.string "password_digest", limit: 500, default: "", null: false
   end
 
 end

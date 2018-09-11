@@ -2,8 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
-    @search = Task.search(params[:q])
+    @tasks = Task.search(params[:search])
+    # 終了期限のソート
+    @search = Task.ransack(params[:q])
     @tasks = @search.result
   end
 
@@ -39,10 +40,13 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice:"けしました"
   end
 
+  def search
+
+  end
 
   private
   def task_params
-    params.require(:task).permit(:title, :content, :limit_time)
+    params.require(:task).permit(:title, :content, :limit_time, :status, :priority_color)
   end
 
   def set_task
