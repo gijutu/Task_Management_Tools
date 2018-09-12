@@ -1,14 +1,16 @@
 <h1><%= t('.name') %></h1>
 <p><%= notice %></p>
 
-<%= form_with(model: @task, local: true) do |form| %>
+<%= form_with(model: @task, local: true, method: :get) do |form| %>
   <%= form.label :たいとる %>
-  <%= form.text_field :hit_title %>
+  <%= form.text_field :title %>
   <%= form.label :すてーたす %>
-  <%= form.select :hit_status, Task.statuses_i18n.keys.map { |k| [Task.statuses_i18n[k], k]} %>
+  <%= form.select :status, Task.statuses_i18n.keys.map { |k| [Task.statuses_i18n[k], k]} %>
+  <%= form.hidden_field :test, value: 'hit' %>
 
-  <%= form.submit "けんさく" %>
+  <%= form.submit "けんさく" ,name: nil %>
 <% end %>
+
 <br><br>
 
 <table>
@@ -20,7 +22,7 @@
     <th><%= t('.status') %></th>
   </tr>
 
-<% @tasks.order("created_on DESC").each do |task| %>
+  <% @tasks.order("created_on DESC").each do |task| %>
   <tr>
     <td><%= task.priority_color %></td>
     <td><%= task.title %></td>
@@ -31,7 +33,7 @@
     <td><%= link_to t('.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('.destroy'), task_path(task.id), method: :delete,data: { confirm: 'さくじょしますよ？'} %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <%= link_to t('.new'),new_task_path %>

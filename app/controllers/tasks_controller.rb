@@ -2,10 +2,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.search(params[:search])
+    if params['test'] == 'hit'
+      @tasks = Task.search(params[:title], params[:status])
+      @search = Task.ransack(params[:q])
+    else
     # 終了期限のソート
-    @search = Task.ransack(params[:q])
-    @tasks = @search.result
+      @search = Task.ransack(params[:q])
+      @tasks = @search.result
+    end
   end
 
   def new
@@ -38,10 +42,6 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to tasks_path, notice:"けしました"
-  end
-
-  def search
-
   end
 
   private

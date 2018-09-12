@@ -6,11 +6,15 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 gem 'rails_12factor', group: :production
 
+gem 'better_errors'
+gem 'binding_of_caller'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'enum_help'
 gem 'jbuilder', '~> 2.5'
+gem 'kaminari', '~> 0.17.0'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'pry-rails'
 gem 'puma', '~> 3.11'
 gem 'ransack'
 gem 'sass-rails', '~> 5.0'
