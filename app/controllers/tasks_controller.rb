@@ -10,6 +10,7 @@ class TasksController < ApplicationController
       @search = Task.ransack(params[:q])
       @tasks = @search.result
     end
+      @tasks = @tasks.page(params[:page])
   end
 
   def new

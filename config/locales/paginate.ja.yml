@@ -1,0 +1,8 @@
+ja:
+  views:
+    pagination:
+      first: "せんとう"
+      last: "まつび"
+      previous: "まえ"
+      next: "つぎ"
+      truncate: "..."

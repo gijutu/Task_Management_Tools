@@ -13,6 +13,7 @@
 
 <br><br>
 
+<%= page_entries_info @tasks %>
 <table>
   <tr>
     <th><%= sort_link(@search, :priority_color,t('.color')) %></th>
@@ -35,5 +36,5 @@
   </tr>
   <% end %>
 </table>
-
+<%= paginate @tasks %>
 <%= link_to t('.new'),new_task_path %>
