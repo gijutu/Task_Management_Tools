@@ -8,4 +8,14 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :users, only: [:new,:create,:show]
+  resources :users
+
+  resources :sessions, only: [:new, :create, :destroy,:show]
+
+  namespace :admins do
+    resources :users
+    resources :tasks
+    resources :sessions
+  end
 end

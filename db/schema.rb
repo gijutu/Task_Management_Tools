@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_014658) do
+ActiveRecord::Schema.define(version: 2018_09_13_085314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 2018_09_13_014658) do
     t.integer "status", null: false
     t.string "priority_color", null: false
     t.datetime "created_on"
+    t.bigint "user_id"
     t.index ["title", "status"], name: "index_tasks_on_title_and_status"
     t.index ["title"], name: "index_tasks_on_title"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +43,5 @@ ActiveRecord::Schema.define(version: 2018_09_13_014658) do
     t.string "password_digest", limit: 500, default: "", null: false
   end
 
+  add_foreign_key "tasks", "users"
 end

@@ -1,7 +1,7 @@
 ja:
   tasks:
     index:
-      name: たすくいちらん
+      name: あなたのたすく
       table_th: たすくめい
       time_limit: いつまでに
       time_project: さくせいび
@@ -11,6 +11,7 @@ ja:
       new: あたらしいたすく
       status: すてーたす
       color: じょうたい
+
     form:
       errors: こえらーがあります
       return: もどる

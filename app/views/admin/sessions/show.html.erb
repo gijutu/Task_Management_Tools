@@ -1,0 +1,26 @@
+<h1>ゆーざーじょうほう</h1>
+<%= form_with(model: @session, local: true) do |form| %>
+
+
+<div class= "table_form">
+  <table>
+    <tr>
+      <div class= "task_title">
+        <td><%= form.label :name %>
+        <%= form.text_field :name %></td>
+      </div>
+      <div class="task_title">
+        <td><%= form.label :email %>
+        <%= form.text_field :email %></td>
+      </div>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td></tr>
+  </table>
+<br>
+</div>
+<div class= "table_submit">
+  <%= form.submit "とうろく"%>
+  <br><br><%= link_to t('.return'), admin_path %>
+</div>
+<% end %>

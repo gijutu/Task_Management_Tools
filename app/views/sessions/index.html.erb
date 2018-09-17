@@ -1,0 +1,24 @@
+<h1>ゆーざーかんりがめん</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>あいでぃー</th>
+      <th>なまえ</th>
+      <th>たすくすう</th>
+      <th>ゆーざのたすくをみる</th>
+      <th>じょうほうをかえる</th>
+      <th>けす</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td>まだ</td>
+        <td><%= link_to t('.show'), tasks_path(user.id),  %></td>
+        <td><%= link_to t('.edit'), session_path(user.id) %></td>
+        <td><%= link_to t('.destroy'), user_path(user.id), method: :delete,data: { confirm: 'さくじょしますよ？'} %></td>
+      </tr>
+    <% end %>
+  </table>

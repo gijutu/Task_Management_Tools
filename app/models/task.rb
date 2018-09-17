@@ -9,4 +9,5 @@ class Task < ApplicationRecord
       Task.all
     end
   end
+   belongs_to :user
 end

@@ -1,38 +1,49 @@
 <%= form_with(model: @task, local: true) do |form| %>
   <% if @task.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= @task.errors.count %><%= t('.errors') %></h2>
+    <div id="error_explanation">
+      <h2><%= @task.errors.count %><%= t('.errors') %></h2>
         <ul>
-
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
         </ul>
-      </div>
+    </div>
   <% end %>
 
-  <div class="task_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="task_title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-  <div class="task_title">
-    <%= form.label :limit %>
-    <%= form.date_select :limit_time %>
-  </div>
-  <div class="task_title">
-    <%= form.label :status %>
-    <%= form.select :status, Task.statuses_i18n.keys.map { |k| [Task.statuses_i18n[k], k]} %>
-  </div>
-  <div class="task_title">
-    <%= form.label :priority_color %>
-    <%= form.select :priority_color, [["たか", "あか"], ["まあまあ", "きいろ"], ["ひくい", "あお"]] %>
-  </div>
-
+<div class= "table_form">
+  <table>
+    <tr>
+      <div class= "task_title">
+        <td><%= form.label :title %>
+        <%= form.text_field :title %></td>
+      </div>
+      <div class="task_title">
+        <td><%= form.label :content %>
+        <%= form.text_field :content %></td>
+      </div>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <div class="task_status">
+        <td><%= form.label :limit %>
+        <%= form.date_select :limit_time %></td>
+      </div>
+      <div class="task_status">
+        <td><%= form.label :status %>
+        <%= form.select :status, Task.statuses_i18n.keys.map { |k| [Task.statuses_i18n[k], k]} %></td>
+      </div>
+      <div class="task_status">
+        <td><%= form.label :priority_color %>
+        <%= form.select :priority_color, [["たか", "あか"], ["まあまあ", "きいろ"], ["ひくい", "あお"]] %></td>
+      </div>
+    </tr>
+  </table>
+<br>
+</div>
+<div class= "table_submit">
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.submit "とうろく"%>
+  <br><br><%= link_to t('.return'), tasks_path %>
+</div>
 <% end %>
-
-<%= link_to t('.return'), tasks_path %>
