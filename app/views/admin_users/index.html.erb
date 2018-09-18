@@ -1,0 +1,45 @@
+<h1>あどみんあどみんあどみんあどみんあどみんあどみんあどみんあどみん</h1>
+<h1>ゆーざーかんりがめん</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>あいでぃー</th>
+      <th>なまえ</th>
+      <th>めいる</th>
+      <th>たすくすう</th>
+      <th>ゆーざのたすくをみる</th>
+      <th>じょうほうをかえる</th>
+      <th>けす</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.email %></td>
+        <td>まだ</td>
+        <td><%= link_to 'しょー', admin_user_path(user.id) %></td>
+        <td><%= link_to 'えでぃっと', edit_admin_user_path(user.id) %></td>
+        <td><%= link_to 'ですとろい', admin_user_path(user.id), method: :delete,data: { confirm: 'さくじょしますよ？'} %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<h1>ユーザー作成</h1>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <%= f.label :きみのな %>
+    <%= f.text_field :name %>
+
+    <%= f.label :あど %>
+    <%= f.email_field :email %>
+
+    <%= f.label :ぱす %>
+    <%= f.password_field :password %>
+
+    <%= f.label :さいぱす %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit "あかうんとづくり" %>
+  <% end %>

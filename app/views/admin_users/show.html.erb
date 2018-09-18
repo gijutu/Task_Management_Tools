@@ -1,0 +1,23 @@
+<h1>あどみんあどみんあどみんあどみんあどみんあどみんあどみんあどみん</h1>
+<h1>ユーザーのたくす</h1>
+
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>いろ</th>
+      <th>なまえ</th>
+      <th>きげん</th>
+      <th>できたひ</th>
+      <th>じょうたい</th>
+    </tr>
+    <% @user.tasks.each do |task| %>
+      <tr>
+        <td><%= task.priority_color %></td>
+        <td><%= task.title %></td>
+        <td><%= task.limit_time %></td>
+        <td><%= task.created_on.strftime("%Y-%m-%d%H:%M") %></td>
+        <td><%= task.status_i18n %></td>
+    <% end %>
+  </table>
+</div>

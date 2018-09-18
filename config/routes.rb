@@ -13,9 +13,5 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy,:show]
 
-  namespace :admins do
-    resources :users
-    resources :tasks
-    resources :sessions
-  end
+  resources :admin_users
 end
