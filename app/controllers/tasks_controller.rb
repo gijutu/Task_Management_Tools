@@ -2,20 +2,26 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
-    @search = Task.search(params[:q])
-    @tasks = @search.result
+    @tasks = current_user.tasks.all
+    if params['test'] == 'hit'
+      @tasks = @tasks.search(params[:title], params[:status])
+      @search = @tasks.ransack(params[:q])
+    else
+      @search = @tasks.ransack(params[:q])
+      @tasks = @search.result
+    end
+      @tasks = @tasks.page(params[:page])
   end
 
   def new
     @task = Task.new
   end
 
-  def show
-  end
+  def show;end
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if @task.save
       redirect_to tasks_path,notice:"たすくをつくりました"
     else
@@ -23,8 +29,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit;end
 
   def update
     if @task.update(task_params)
@@ -39,10 +44,10 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice:"けしました"
   end
 
-
   private
+
   def task_params
-    params.require(:task).permit(:title, :content, :limit_time)
+    params.require(:task).permit(:title, :content, :limit_time, :status, :priority_color,:user_id)
   end
 
   def set_task

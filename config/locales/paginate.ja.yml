@@ -1,0 +1,16 @@
+ja:
+  views:
+    pagination:
+      first: "せんとう"
+      last: "まつび"
+      previous: "まえ"
+      next: "つぎ"
+      truncate: "..."
+  helpers:
+    page_entries_info:
+      one_page:
+        zero: "<b>でーたなし</b>"
+        one: "<b>1けんちゅう 1〜1 けんをひょうじ</b>"
+        display_entries: '【%1〜%{count}けんをひょうじちゅう / たすくはごうけい%{count}けんあります】'
+      more_pages:
+        display_entries: '【%{first}〜%{last}けんをひょうじちゅう / たすくはごうけい%{total}けんあります】'

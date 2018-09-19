@@ -8,6 +8,9 @@ ja:
         title: "たいとる"
         content: "しょうさい"
         limit: "りみっと"
+        status: すてーたす
+        priority_color: ゆうせんど
+
       user:
         title: "たいとる"
         name: "なまえ"

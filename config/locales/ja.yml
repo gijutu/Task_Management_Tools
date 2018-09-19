@@ -1,4 +1,10 @@
 ja:
+  enums:
+    task:
+      status:
+        not_started_yet: みちゃくしゅ
+        started: やってます
+        complete: ずみ
   activerecord:
     errors:
       messages:

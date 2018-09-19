@@ -1,0 +1,31 @@
+<h1>あどみんあどみんあどみんあどみんあどみんあどみんあどみんあどみん</h1>
+<h1>ゆーざーじょうほう</h1>
+<%= form_with(model: @user, local: true) do |form| %>
+
+
+<div class= "table_form">
+  <table>
+    <tr>
+      <div class= "task_title">
+        <td><%= form.label :name %>
+        <%= form.text_field :name %></td>
+      </div>
+      <div class="task_title">
+        <td><%= form.label :email %>
+        <%= form.text_field :email %></td>
+      </div>
+      <div class= "task_title">
+        <td><%= form.label :けんげん %>
+        <%= form.select :admin, [["いっぱん",0 ],["かんりしゃ",1 ] ] %></td>
+      </div>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td></tr>
+  </table>
+<br>
+</div>
+<div class= "table_submit">
+  <%= form.submit "とうろく"%>
+  <br><br><%= link_to t('.return'), admin_users_path %>
+</div>
+<% end %>
