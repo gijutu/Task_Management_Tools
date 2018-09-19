@@ -1,6 +1,10 @@
 class AdminUsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :destroy,:roll_change]
+  before_action :admin_user, only: [:index,:destroy,:show,:edit]
   def index
     @users = User.all
+    @tasks = Task.all
+    @user = User.new
   end
 
   def new
@@ -17,19 +21,21 @@ class AdminUsersController < ApplicationController
  end
 
   def show
-    @user = User.find(params[:id])
     @tasks = Task.all
     @tasks = @tasks.page(params[:page])
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit;end
 
   def destroy
-    @user = User.find(params[:id]).destroy
-    redirect_to admin_users_path
+    if current_user == @user
+      redirect_to admin_users_path
+    else
+      @user.destroy
+      redirect_to admin_users_path
+    end
   end
+
 end
 
 private
@@ -39,9 +45,13 @@ def task_params
 end
 
 def user_params
-  params.require(:user).permit(:name, :email, :password,:password_confirmation)
+  params.require(:user).permit(:name, :email, :password,:password_confirmation,:admin)
 end
 
-def set_task
-  @task = Task.find(params[:id])
+def set_user
+  @user = User.find(params[:id])
+end
+
+def admin_user
+  redirect_to users_path unless current_user.admin?
 end

@@ -15,10 +15,14 @@ class UsersController < ApplicationController
 
  def update
    @user = User.find(params[:id])
-   if @user.update(user_params)
-     redirect_to admin_users_path,notice: "へんしゅうしました"
-   else
+   if current_user == @user
      redirect_to admin_users_path
+   else
+     if @user.update(user_params)
+       redirect_to admin_users_path,notice: "へんしゅうしました"
+     else
+       redirect_to admin_users_path
+     end
    end
  end
 
@@ -26,6 +30,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,:admin)
   end
 end
