@@ -15,14 +15,23 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @labels = Label.all
   end
 
-  def show;end
+  def show
+    @labelings = Labeling.all
+    @labels = Label.all
+  end
 
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
+      Label.all.each do |label|
+        if params[:task]["label_#{label.id}"].to_i == 1
+          @labels = Labeling.create!(task_id: @task.id, label_id: label.id)
+        end
+      end
       redirect_to tasks_path,notice:"たすくをつくりました"
     else
       render 'new',notice:"たすくができてないです"

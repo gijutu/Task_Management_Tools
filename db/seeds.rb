@@ -5,13 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Label.create!(label_name: "かいがいむけ")
+Label.create!(label_name: "こくないむけ")
+Label.create!(label_name: "こじん")
+Label.create!(label_name: "かぞく")
+Label.create!(label_name: "かいしゃ")
+
 User.create!(name: "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
 
-10.times do |n|
+5.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
