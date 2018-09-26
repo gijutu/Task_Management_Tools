@@ -39,7 +39,8 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @labels
+    @labelings = Labeling.all
+    @labels = Label.all
   end
 
   def update
