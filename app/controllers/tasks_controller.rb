@@ -38,7 +38,9 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit;end
+  def edit
+    @labels
+  end
 
   def update
     if @task.update(task_params)

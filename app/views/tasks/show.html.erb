@@ -1,7 +1,7 @@
 <h1><%= t('.name') %></h1>
 <div class="task_show">
   <% @task.labeling_labels.each do |label| %>
-    <h2>らべる: <%= label.label_name %></h2><br>
+    <h2><label style="background-color: red">らべる: <%= label.label_name %></label></h2><br>
   <% end %>
   <h2><%= t('.title') %>: <%= @task.title %></h2><br>
   <h3><%= t('.content') %>: <%= @task.content %></h3><br>

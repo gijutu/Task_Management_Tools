@@ -43,7 +43,7 @@
       <% @labels.each do |label| %>
         <td><%= form.check_box "label_#{label.id}" %>
         <%= label.id %>
-        <%= label.label_name %></td>
+        <label style="background-color: red"><%= label.label_name %></label></td>
       <% end %>
     </div>
     </tr>
