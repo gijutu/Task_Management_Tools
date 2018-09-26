@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy,:show]
 
   resources :admin_users
+
+  resources :labels
+
+  resources :labelings, only: [:create, :destroy]
 end

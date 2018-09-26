@@ -38,12 +38,41 @@
         <%= form.select :priority_color, [["たか", "あか"], ["まあまあ", "きいろ"], ["ひくい", "あお"]] %></td>
       </div>
     </tr>
+    </tr>
+      <div class="task_status">
+      <% @labels.each do |label| %>
+        <td><%= form.check_box "label_#{label.id}" %>
+        <%= label.id %>
+        <%= label.label_name %></td>
+      <% end %>
+    </div>
+    </tr>
   </table>
 <br>
 </div>
+
 <div class= "table_submit">
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.submit "とうろく"%>
+  <% end %>
   <br><br><%= link_to t('.return'), tasks_path %>
 </div>
+
+
+
+
+<!-- <div class= "table_form">
+<h3>らべる</h3>
+<%= form_with(model: @labeling, local: true) do |form| %>
+<% @labels.each do |label| %>
+<%= form.check_box :label_name %>
+<%= label.id %>
+<%= label.label_name %>
 <% end %>
+<%= form.hidden_field :user_id, value: current_user.id %>
+<%= form.submit "ついか"%>
+
+
+<% end %>
+<br><br><%= link_to t('.return'), tasks_path %>
+</div> -->
